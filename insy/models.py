@@ -2,30 +2,34 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser,AbstractBaseUser,User
 from phonenumber_field.modelfields import PhoneNumberField
 
+class Department(models.Model):
+    dept_id = models.CharField(max_length=10,primary_key=True)
+    dept_name = models.CharField(max_length=100,default='')
+
 class Faculty(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE,null=True)
+    user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
     name = models.CharField(max_length=30)
     designation = models.CharField(max_length=50, choices = (('Professor','Professor'),('Associate Professor','Associate Professor'),('Assistant Professor','Assistant Professor'),('ADHOC','ADHOC')))
-    department = models.CharField(max_length=100,choices=(('CE','Civil Engineering'),('CHE','Chemical Engineering'),('CSE','Computer Science & Engineering'),('ECE','Electronics & Commmunication Engineering'),('EEE','Electrical & Electronics Engineering'),('ME','Mechanical Engineering'),('PE','Production Engineering')),default='CSE')
-    phone_number = PhoneNumberField()
+    department = models.ForeignKey(to=Department,related_name="teaches_at",null=True, blank=True)
     email = models.EmailField()
+    phone_number = PhoneNumberField()
 
     def __str__(self):
         return self.name
 
 class Academic_History(models.Model):
+    university_roll_no = models.CharField(max_length=20,primary_key=True)
     semester = models.CharField(max_length=50,choices=(('S1','Semester I'),('S2','Semester II'),('S3','Semester III'),('S4','Semester IV'),('S5','Semester V'),('S6','Semester VI'),('S7','Semester VII'),('S8','Semester VIII')),default=1)
     month_of_registration = models.DateField()
-    Whether_condonation_availed = models.CharField(max_length=50,choices=((1,'No'),(2,'Yes')),default=2)
+    Whether_condonation_availed = models.CharField(max_length=50,choices=((1,'No'),(2,'Yes')),default=1)
 
 
 class Student(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE,null=True)
-    department = models.CharField(max_length=100,choices=(('CE','Civil Engineering'),('CHE','Chemical Engineering'),('CSE','Computer Science & Engineering'),('ECE','Electronics & Commmunication Engineering'),('EEE','Electrical & Electronics Engineering'),('ME','Mechanical Engineering'),('PE','Production Engineering')),default='CSE')
+    user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
+    department = models.ForeignKey(to=Department,related_name="studies_in",null=True, blank=True)
     semester = models.CharField(max_length=50,choices=(('S1','Semester I'),('S2','Semester II'),('S3','Semester III'),('S4','Semester IV'),('S5','Semester V'),('S6','Semester VI'),('S7','Semester VII'),('S8','Semester VIII')),default=1)
     date_of_registration = models.DateField()
     name = models.CharField(max_length=30)
-    university_roll_no = models.CharField(max_length=20)
     name_of_parent = models.CharField(max_length=30)
     address = models.TextField(max_length=100)
     Academic_History = models.ForeignKey(to=Academic_History,related_name="examdetails",null=True, blank=True)
@@ -37,7 +41,7 @@ class Student(models.Model):
         return self.user
 
 class Subject(models.Model):
-    subject_code = models.CharField(max_length=10)
+    subject_code = models.CharField(max_length=100,primary_key=True)
     subject_name = models.CharField(max_length=100)
     faculty = models.ForeignKey(to=Faculty,related_name="teaches",null=True, blank=True)
 
