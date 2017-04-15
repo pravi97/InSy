@@ -29,8 +29,18 @@ class Student(models.Model):
         return self.user
 
 class Subject(models.Model):
-    name = models.CharField(max_length=100)
+    subject_name = models.CharField(max_length=100)
     faculty = models.ForeignKey(to=Faculty,related_name="teaches",null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.subject_name
+
+class Attendance(models.Model):
+    student = models.ForeignKey(to=Student,related_name="attends",null=True, blank=True)
+    subject = models.ForeignKey(to=Subject,related_name="attended",null=True, blank=True)
+    month = models.DateField()
+    hours_in_total = models.IntegerField()
+    hours_attended = models.IntegerField()
+
+    def __str__(self):
+        return self.student
