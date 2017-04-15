@@ -1,0 +1,16 @@
+{% extends "insy/attendance_base.html" %}
+
+{% block title %}
+    Create Attendance
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "attendance_list" %}>Attendance</a></h1>
+<h2>Create Attendance</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create" />
+</form>
+<a href={% url "attendance_list" %}>Cancel</a>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "insy/faculty_base.html" %}
+
+{% block title %}
+    Create Faculty
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "faculty_list" %}>Faculty</a></h1>
+<h2>Create Faculty</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create" />
+</form>
+<a href={% url "faculty_list" %}>Cancel</a>
+{% endblock %}

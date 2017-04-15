@@ -1,0 +1,14 @@
+{% extends "insy/attendance_base.html" %}
+
+{% block title %}
+    {{ attendance }}
+{% endblock %}
+
+{% block content %}
+    <h1><a href={% url "attendance_list" %}>Attendance</a></h1>
+    <h2>{{ attendance }} | <a href={% url "attendance_update" attendance.pk %}>Update</a> | 
+    <form style="display:inline;" action={% url "attendance_delete" attendance.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ attendance }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form>
+    </h2>
+{% endblock %}

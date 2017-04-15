@@ -1,0 +1,16 @@
+{% extends "insy/academic_history_base.html" %}
+
+{% block title %}
+    Create Academic_History
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "academic_history_list" %}>Academic_History</a></h1>
+<h2>Create Academic_History</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create" />
+</form>
+<a href={% url "academic_history_list" %}>Cancel</a>
+{% endblock %}

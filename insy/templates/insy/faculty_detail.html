@@ -1,0 +1,14 @@
+{% extends "insy/faculty_base.html" %}
+
+{% block title %}
+    {{ faculty }}
+{% endblock %}
+
+{% block content %}
+    <h1><a href={% url "faculty_list" %}>Faculty</a></h1>
+    <h2>{{ faculty }} | <a href={% url "faculty_update" faculty.pk %}>Update</a> | 
+    <form style="display:inline;" action={% url "faculty_delete" faculty.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ faculty }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form>
+    </h2>
+{% endblock %}

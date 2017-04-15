@@ -6,6 +6,9 @@ class Department(models.Model):
     dept_id = models.CharField(max_length=10,primary_key=True)
     dept_name = models.CharField(max_length=100,default='')
 
+    def __str__(self):
+        return self.dept_id
+
 class Faculty(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
     name = models.CharField(max_length=30)

@@ -1,0 +1,17 @@
+{% extends "insy/faculty_base.html" %}
+
+{% block title %}
+    Delete {{ faculty }}
+{% endblock %}
+
+{% block content %}
+<h1>Delete {{ faculty }}</h1>
+
+<form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete {{ faculty }}?</p>
+    <input type="submit" value="Confirm" />
+</form>
+
+<a href={% url "faculty_detail" faculty.pk %}>Cancel</a>
+
+{% endblock %}

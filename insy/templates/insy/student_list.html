@@ -1,0 +1,20 @@
+{% extends "insy/student_base.html" %}
+
+{% block title %}
+    Students
+{% endblock %}
+
+{% block content %}
+    <h1>Students</h1>
+    <h2><a href={% url "student_create" %}>Create new Student</a></h2>
+    <ul>
+    {% for student in student_list %}
+        <li><a href={% url "student_detail" student.pk %}>{{ student }}</a> | <a href={% url "student_update" student.pk %}>Update</a> | <form style="display:inline;" action={% url "student_delete" student.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ student }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form></li>
+    {% empty %}
+        <li>No Students yet.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+

@@ -1,0 +1,14 @@
+{% extends "insy/academic_history_base.html" %}
+
+{% block title %}
+    {{ academic_history }}
+{% endblock %}
+
+{% block content %}
+    <h1><a href={% url "academic_history_list" %}>Academic_History</a></h1>
+    <h2>{{ academic_history }} | <a href={% url "academic_history_update" academic_history.pk %}>Update</a> | 
+    <form style="display:inline;" action={% url "academic_history_delete" academic_history.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ academic_history }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form>
+    </h2>
+{% endblock %}

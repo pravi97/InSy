@@ -1,0 +1,19 @@
+{% extends "insy/subject_base.html" %}
+
+{% block title %}
+    Update {{ subject }}
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "subject_list" %}>Subject</a></h1>
+<h2>Update {{ subject }}</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update" />
+</form>
+<a href={% url "subject_detail" subject.pk %}>Cancel</a>
+<form style="display:inline;" action={% url "subject_delete" subject.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ subject }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+</form>
+{% endblock %}

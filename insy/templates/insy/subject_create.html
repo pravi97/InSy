@@ -1,0 +1,16 @@
+{% extends "insy/subject_base.html" %}
+
+{% block title %}
+    Create Subject
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "subject_list" %}>Subject</a></h1>
+<h2>Create Subject</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create" />
+</form>
+<a href={% url "subject_list" %}>Cancel</a>
+{% endblock %}

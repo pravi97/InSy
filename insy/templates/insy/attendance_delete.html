@@ -1,0 +1,17 @@
+{% extends "insy/attendance_base.html" %}
+
+{% block title %}
+    Delete {{ attendance }}
+{% endblock %}
+
+{% block content %}
+<h1>Delete {{ attendance }}</h1>
+
+<form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete {{ attendance }}?</p>
+    <input type="submit" value="Confirm" />
+</form>
+
+<a href={% url "attendance_detail" attendance.pk %}>Cancel</a>
+
+{% endblock %}
