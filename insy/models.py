@@ -16,7 +16,7 @@ class Faculty(models.Model):
 class Academic_History(models.Model):
     semester = models.CharField(max_length=50,choices=(('S1','Semester I'),('S2','Semester II'),('S3','Semester III'),('S4','Semester IV'),('S5','Semester V'),('S6','Semester VI'),('S7','Semester VII'),('S8','Semester VIII')),default=1)
     month_of_registration = models.DateField()
-    Whether_condonation_availed = models.CharField(choices=((1,'No'),(2,'Yes')),default=2)
+    Whether_condonation_availed = models.CharField(max_length=50,choices=((1,'No'),(2,'Yes')),default=2)
 
 
 class Student(models.Model):
@@ -29,7 +29,7 @@ class Student(models.Model):
     name_of_parent = models.CharField(max_length=30)
     address = models.TextField(max_length=100)
     Academic_History = models.ForeignKey(to=Academic_History,related_name="examdetails",null=True, blank=True)
-    Whether_eligible_for_registration = models.CharField(choices=((1,'No'),(2,'Yes')),default=2)
+    Whether_eligible_for_registration = models.CharField(max_length=50,choices=((1,'No'),(2,'Yes')),default=2)
     Hosteler_or_dayscholar = models.CharField(max_length=10,choices=(('D','Dayscholar'),('H','Hosteler')),default='D')
     name_of_hostel = models.CharField(max_length=50,null=True,blank=True)
 
