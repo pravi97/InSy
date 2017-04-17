@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<!-- Wrapper -->
+<div id="wrapper">
+    <!-- Header -->
+	<header id="header">
+        <div class="logo">
+            <span class="icon fa-graduation-cap"></span>
+		</div>
+		<div class="content">
+			<div class="inner">
+				<h1>insy</h1>
+					<p><!--[-->An information system for teachers and students</p>
+			</div>
+		</div>
+		<nav>
+            <ul>
+                <li><a href="#CIO">CIO</a></li>
+                <li><a href="#FACULTY">FACULTY</a></li>
+				<li><a href="#STUDENT">STUDENT</a></li>
+				<li><a href="#ABOUT">ABOUT</a></li>
+			</ul>
+		</nav>
+	</header>
+
+    <!-- Main -->
+    <div id="main">
+	<!-- STUDENT -->
+	<article id="STUDENT">
+		 <div class="login">
+			<h1>STUDENT</h1>
+    		<form method="post">
+    		<input type="text" name="u" placeholder="Username" required="required" /></br>
+       		<input type="password" name="p" placeholder="Password" required="required" /></br>
+       		<button type="submit" class="btn btn-primary btn-block btn-large">Login</button></br>
+   			</form>
+		</div>
+  		<!-- <script src="{% static 'js/index.js' %}"></script> -->
+	</article>
+
+	<!-- FACULTY -->
+    <article id="FACULTY">
+        <div class="login">
+			<h1>FACULTY</h1>
+    		<form method="post">
+    		<input type="text" name="u" placeholder="Username" required="required" /></br>
+       		<input type="password" name="p" placeholder="Password" required="required" /></br>
+       		<button type="submit" class="btn btn-primary btn-block btn-large">Login</button></br>
+   			</form>
+		</div>
+  		<!-- <script src="{% static 'js/index.js' %}"></script> -->
+	</article>
+
+	<!--CIO -->
+	<article id="CIO">
+		<div class="login">
+			<h1>CIO</h1>
+    		<form method="post">
+    		<input type="text" name="u" placeholder="Username" required="required" /></br>
+       		<input type="password" name="p" placeholder="Password" required="required" /></br>
+       		<button type="submit" class="btn btn-primary btn-block btn-large">Login</button></br>
+   			</form>
+   		</div>
+  	<!-- <script src="{% static 'js/index.js' %}"></script> -->
+	</article>
+
+	<!-- ABOUT -->
+	<article id="ABOUT">
+
+		<H1>ABOUT</h1>
+		<p>THIS IS AN APPLICATION TO HELP TEACHERS AND STUDENTS</P>
+	</article>
+    </div>
+    <!-- Footer -->
+	<footer id="footer">
+		<p class="copyright">&copy; Group_08@S6_Miniproject</p>
+	</footer>
+</div>
+<!-- Scripts -->
+			<script src="{% static 'js/jquery.min.js' %}"></script>
+			<script src="{% static 'js/skel.min.js' %}"></script>
+			<script src="{% static 'js/util.js' %}"></script>
+			<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}
